@@ -21,7 +21,7 @@
  }
  ```
 
-> **Attention**: This is a work in progress version and it is not meant to be used as a drop-in replacement to default built-in module.
+This is not meant to be used as a drop-in replacement to default built-in module since Java Properties syntax is not compatible with HOCON.
 
 ## How to use
 
@@ -32,7 +32,7 @@ Just follow the steps below:
 Add the dependency to your `build.sbt` file:
 
 ```scala
-libraryDependencies += "com.github.marcospereira" %% "play-hocon-i18n" % "0.0.1"
+libraryDependencies += "com.github.marcospereira" %% "play-hocon-i18n" % "0.0.2"
 ```
 
 #### Disable built-in I18n Module
@@ -50,6 +50,16 @@ Add the following line to your `conf/application.conf` file:
 ```
 play.modules.enabled += com.marcospereira.play.i18n.HoconI18nModule
 ```
+
+#### Write your message files with HOCON syntax
+
+As stated before, HOCON syntax and Java Properties are not fully compatible. The good part is that HOCON loader gives clear messages about invalid syntax and you can easily fix the errors. Of course, all HOCON features are enable here. Finally, you have to rename your messages files to have a `.conf` extension, per instance:
+
+| Before                | After                      |
+|:----------------------|:---------------------------|
+| `conf/messages`       | `conf/messages.conf`       |
+| `conf/messages.en`    | `conf/messages.en.conf`    |
+| `conf/messages.en-US` | `conf/messages.en-US.conf` |
 
 ## License
 
