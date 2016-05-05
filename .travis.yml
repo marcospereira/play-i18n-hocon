@@ -1,0 +1,16 @@
+language: scala
+sudo: false
+jdk:
+  - oraclejdk8
+env:
+  - SCRIPT="sbt test publishLocal"
+  - SCRIPT="cd samples/java && sbt test"
+  - SCRIPT="cd samples/scala && sbt test"
+script:
+  - $SCRIPT
+cache:
+  directories:
+    - $HOME/.ivy2/cache
+before_cache:
+  # Delete all ivydata files since ivy touches them on each build
+  - find $HOME/.ivy2/cache -name "ivydata-*.properties" | xargs rm

@@ -6,6 +6,7 @@ bin/
 /logs/
 /modules
 /project/target
+/project/project
 /target
 tmp/
 test-result
@@ -13,3 +14,5 @@ server.pid
 *.eml
 /dist/
 .cache
+samples/**/target
+samples/**/logs
