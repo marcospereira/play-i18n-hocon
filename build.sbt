@@ -57,3 +57,5 @@ lazy val publishSettings = Seq(
       </developers>
     )
 )
+
+addCommandAlias("full-release", ";release;publishSigned;sonatypeRelease")
