@@ -69,6 +69,15 @@ class HoconMessagesApi @Inject() (
   }
 }
 
+/**
+ * Module that replaces built-in MessagesApi implementation with a HOCON format based implementation. To enable this
+ * module, you have to edit your `application.conf` and add these two lines:
+ *
+ * {{{
+ *   play.modules.disabled += play.api.i18n.I18nModule
+ *   play.modules.enabled += com.marcospereira.play.i18n.HoconI18nModule
+ * }}}
+ */
 class HoconI18nModule extends Module {
   def bindings(environment: Environment, configuration: Configuration) = Seq(
     bind[Langs].to[DefaultLangs],
@@ -76,6 +85,9 @@ class HoconI18nModule extends Module {
   )
 }
 
+/**
+ * Components for Compile Time Dependency Injection.
+ */
 trait HoconI18nComponents {
 
   def environment: Environment
