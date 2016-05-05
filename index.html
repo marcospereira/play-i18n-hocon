@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Play-i18n-hocon by marcospereira</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Play-i18n-hocon</h1>
+      <h2 class="project-tagline">A Playframework module to use HOCON for i18n instead of properties</h2>
+      <a href="https://github.com/marcospereira/play-i18n-hocon" class="btn">View on GitHub</a>
+      <a href="https://github.com/marcospereira/play-i18n-hocon/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/marcospereira/play-i18n-hocon/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="play-i18n-using-hocon" class="anchor" href="#play-i18n-using-hocon" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Play I18n using HOCON</h1>
+
+<p><a href="https://travis-ci.org/marcospereira/play-i18n-hocon"><img src="https://travis-ci.org/marcospereira/play-i18n-hocon.svg?branch=master" alt="Build Status"></a></p>
+
+<p><a href="https://github.com/typesafehub/config/blob/v1.3.0/HOCON.md">HOCON</a> (Human-Optimized Config Object Notation) and Typesafe Config are the standard way to <a href="https://www.playframework.com/documentation/2.5.x/Configuration">configure Play applications</a>. But, for Internationalization, Play uses <a href="https://docs.oracle.com/javase/tutorial/essential/environment/properties.html">Java Properties</a> which don't have a syntax to structure an tree of keys used to i18n.</p>
+
+<p>This plugin offers that by using HOCON as the language for I18n too, so your <code>messages</code> files will be like:</p>
+
+<pre><code> pages {
+    signup {
+        title = "The Signup page"
+        form {
+            title = "The signup form"
+            name = "Type your name"
+            email = "Type your email"
+            password = "Type your password"
+            submit = "Signup now"
+        }
+    }
+ }
+</code></pre>
+
+<p>This is not meant to be used as a drop-in replacement to default built-in module since Java Properties syntax is not compatible with HOCON.</p>
+
+<h2>
+<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to use</h2>
+
+<p>Just follow the steps below:</p>
+
+<h4>
+<a id="add-module-dependency" class="anchor" href="#add-module-dependency" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add Module Dependency</h4>
+
+<p>Add the dependency to your <code>build.sbt</code> file:</p>
+
+<div class="highlight highlight-source-scala"><pre>libraryDependencies <span class="pl-k">+</span><span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>com.github.marcospereira<span class="pl-pds">"</span></span> <span class="pl-k">%%</span> <span class="pl-s"><span class="pl-pds">"</span>play-hocon-i18n<span class="pl-pds">"</span></span> <span class="pl-k">%</span> <span class="pl-s"><span class="pl-pds">"</span>0.0.2<span class="pl-pds">"</span></span></pre></div>
+
+<h4>
+<a id="disable-built-in-i18n-module" class="anchor" href="#disable-built-in-i18n-module" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Disable built-in I18n Module</h4>
+
+<p>Add the following line to your <code>conf/application.conf</code> file:</p>
+
+<pre><code>play.modules.disabled += play.api.i18n.I18nModule
+</code></pre>
+
+<h4>
+<a id="enable-hocon-i18n-module" class="anchor" href="#enable-hocon-i18n-module" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Enable HOCON I18n Module</h4>
+
+<p>Add the following line to your <code>conf/application.conf</code> file:</p>
+
+<pre><code>play.modules.enabled += com.marcospereira.play.i18n.HoconI18nModule
+</code></pre>
+
+<h4>
+<a id="write-your-message-files-with-hocon-syntax" class="anchor" href="#write-your-message-files-with-hocon-syntax" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Write your message files with HOCON syntax</h4>
+
+<p>As stated before, HOCON syntax and Java Properties are not fully compatible. The good part is that HOCON loader gives clear messages about invalid syntax and you can easily fix the errors. Of course, all HOCON features are enable here. Finally, you have to rename your messages files to have a <code>.conf</code> extension, per instance:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Before</th>
+<th align="left">After</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>conf/messages</code></td>
+<td align="left"><code>conf/messages.conf</code></td>
+</tr>
+<tr>
+<td align="left"><code>conf/messages.en</code></td>
+<td align="left"><code>conf/messages.en.conf</code></td>
+</tr>
+<tr>
+<td align="left"><code>conf/messages.en-US</code></td>
+<td align="left"><code>conf/messages.en-US.conf</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>Copyright 2016 Marcos Pereira</p>
+
+<p>Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
+
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+
+<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/marcospereira/play-i18n-hocon">Play-i18n-hocon</a> is maintained by <a href="https://github.com/marcospereira">marcospereira</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
