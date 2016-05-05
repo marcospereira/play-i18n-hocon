@@ -3,7 +3,7 @@ sudo: false
 jdk:
   - oraclejdk8
 env:
-  - SCRIPT="sbt test publishLocal"
+  - SCRIPT="sbt clean coverage test publishLocal"
   - SCRIPT="cd samples/java && sbt test"
   - SCRIPT="cd samples/scala && sbt test"
 script:
@@ -14,3 +14,5 @@ cache:
 before_cache:
   # Delete all ivydata files since ivy touches them on each build
   - find $HOME/.ivy2/cache -name "ivydata-*.properties" | xargs rm
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
