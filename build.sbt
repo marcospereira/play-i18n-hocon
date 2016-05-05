@@ -2,8 +2,6 @@ name := "play-hocon-i18n"
 
 organization := "com.github.marcospereira"
 
-version := "0.0.2"
-
 scalaVersion := "2.11.8"
 
 startYear := Some(2016)
