@@ -18,6 +18,11 @@ lazy val root = (project in file("."))
   .enablePlugins(PlayScala)
   .disablePlugins(PlayLayoutPlugin)
   .settings(publishSettings: _*)
+  .settings(githubPagesSettings: _*)
+
+lazy val githubPagesSettings = ghpages.settings ++ Seq(
+  git.remoteRepo := "git@github.com:marcospereira/play-i18n-hocon.git"
+)
 
 lazy val publishSettings = Seq(
   publishMavenStyle := true,
