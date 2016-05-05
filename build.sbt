@@ -33,27 +33,26 @@ lazy val publishSettings = Seq(
   autoScalaLibrary in test := false,
   publishArtifact in Test := false,
   pomIncludeRepository := { _ => false },
-  pomExtra := (
+  pomExtra :=
     <url>https://github.com/marcospereira/play-i18n-hocon</url>
-      <licenses>
-        <license>
-          <name>Apache License</name>
-          <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-          <distribution>repo</distribution>
-        </license>
-      </licenses>
-      <scm>
-        <url>https://github.com/marcospereira/play-i18n-hocon.git</url>
-        <connection>scm:git@github.com:marcospereira/play-i18n-hocon.git</connection>
-      </scm>
-      <developers>
-        <developer>
-          <id>marcospereira</id>
-          <name>Marcos Pereira</name>
-          <url>https://github.com/marcospereira</url>
-        </developer>
-      </developers>
-    )
+    <licenses>
+      <license>
+        <name>Apache License</name>
+        <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        <distribution>repo</distribution>
+      </license>
+    </licenses>
+    <scm>
+      <url>https://github.com/marcospereira/play-i18n-hocon.git</url>
+      <connection>scm:git@github.com:marcospereira/play-i18n-hocon.git</connection>
+    </scm>
+    <developers>
+      <developer>
+        <id>marcospereira</id>
+        <name>Marcos Pereira</name>
+        <url>https://github.com/marcospereira</url>
+      </developer>
+    </developers>
 )
 
 addCommandAlias("full-release", ";release;publishSigned;sonatypeRelease")
