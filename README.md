@@ -1,5 +1,7 @@
 # Play I18n using HOCON
 
+[![Build Status](https://travis-ci.org/marcospereira/play-i18n-hocon.svg?branch=master)](https://travis-ci.org/marcospereira/play-i18n-hocon)
+
 [HOCON](https://github.com/typesafehub/config/blob/v1.3.0/HOCON.md) (Human-Optimized Config Object Notation) and Typesafe Config are the standard way to [configure Play applications](https://www.playframework.com/documentation/2.5.x/Configuration). But, for Internationalization, Play uses [Java Properties](https://docs.oracle.com/javase/tutorial/essential/environment/properties.html) which don't have a syntax to structure an tree of keys used to i18n.
 
  This plugin offers that by using HOCON as the language for I18n too, so your `messages` files will be like:
