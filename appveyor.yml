@@ -23,7 +23,9 @@ build_script:
 test_script:
   - sbt clean coverage test coverageReport codacyCoverage
 after_test:
-  - bash <(curl -s https://codecov.io/bash)
+  - "SET PATH=C:\\Python34;C:\\Python34\\Scripts;%PATH%"
+  - pip install codecov
+  - codecov
 cache:
   - C:\sbt\
   - C:\Users\appveyor\.ivy2
