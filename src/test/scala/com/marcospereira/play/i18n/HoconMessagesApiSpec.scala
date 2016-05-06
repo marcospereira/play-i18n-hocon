@@ -23,8 +23,8 @@ class HoconMessagesApiSpec extends PlaySpec with OneAppPerSuite {
     "get messages using the preferred language" in {
       val messagesApi = app.injector.instanceOf[MessagesApi]
       val messages = messagesApi.preferred(Seq(Lang("pt")))
-      messages("test.messages.simple") mustBe "Olá"
-      messages("test.messages.parameters", "Stranger") mustBe "Olá, Stranger"
+      messages("test.messages.simple") mustBe "Ola"
+      messages("test.messages.parameters", "Stranger") mustBe "Ola, Stranger"
     }
 
     "get default language when preferred language is not recognized" in {
