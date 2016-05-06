@@ -20,7 +20,6 @@ install:
   - cmd: SET COURSIER_NO_TERM=1
 build_script:
   - sbt clean compile publishLocal
-  - git log HEAD -1
 test_script:
   - sbt clean coverage test coverageReport codacyCoverage
 after_test:
