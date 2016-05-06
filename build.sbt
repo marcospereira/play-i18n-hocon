@@ -11,6 +11,7 @@ description := "A Play modules that provides I18n using Hocon as the messages fi
 scalacOptions := Seq("-feature", "-deprecation", "-Ywarn-unused-import")
 
 libraryDependencies ++= Seq(
+  "com.typesafe.netty" % "netty-http-pipelining" % "1.1.4",
   "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test
 )
 
