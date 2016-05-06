@@ -4,8 +4,8 @@ jdk:
   - oraclejdk8
 env:
   - SCRIPT="sbt clean coverage test coverageReport codacyCoverage publishLocal"
-  - SCRIPT="cd samples/java && sbt test"
-  - SCRIPT="cd samples/scala && sbt test"
+  - SCRIPT="./scripts/testJavaSample"
+  - SCRIPT="./scripts/testScalaSample"
 script:
   - $SCRIPT
 cache:

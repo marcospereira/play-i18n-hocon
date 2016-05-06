@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+cd samples/java
+sbt test
