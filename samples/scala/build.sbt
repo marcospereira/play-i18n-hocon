@@ -10,7 +10,7 @@ libraryDependencies ++= Seq(
   jdbc,
   cache,
   ws,
-  "com.github.marcospereira" %% "play-hocon-i18n" % "0.0.1",
+  "com.github.marcospereira" %% "play-hocon-i18n" % "0.0.2",
   "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test
 )
 

@@ -10,5 +10,5 @@ libraryDependencies ++= Seq(
   javaJdbc,
   cache,
   javaWs,
-  "com.github.marcospereira" %% "play-hocon-i18n" % "0.0.1"
+  "com.github.marcospereira" %% "play-hocon-i18n" % "0.0.2"
 )
