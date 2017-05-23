@@ -52,7 +52,7 @@ class HoconMessagesApi @Inject() (
       ConfigFactory.parseURL(url)
     }
 
-    config.entrySet().asScala
+    config.resolve().entrySet().asScala
       .map(e => e.getKey -> String.valueOf(e.getValue.unwrapped()))
       .toMap
   }
