@@ -68,5 +68,11 @@ class HoconMessagesApiSpec extends PlaySpec with OneAppPerSuite {
       val messagesApi = app.injector.instanceOf[MessagesApi]
       messagesApi("constraint.required") mustBe "Required"
     }
+
+    "get resolved messages" in {
+      val messagesApi = app.injector.instanceOf[MessagesApi]
+      messagesApi.preferred(Seq(Lang("en")))
+      messagesApi("test.resolve") mustBe "Hello"
+    }
   }
 }
