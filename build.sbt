@@ -2,7 +2,7 @@ name := "play-hocon-i18n"
 
 organization := "com.github.marcospereira"
 
-scalaVersion := "2.11.8"
+scalaVersion := "2.11.11"
 
 startYear := Some(2016)
 
@@ -11,18 +11,13 @@ description := "A Play modules that provides I18n using Hocon as the messages fi
 scalacOptions := Seq("-feature", "-deprecation", "-Ywarn-unused-import")
 
 libraryDependencies ++= Seq(
-  "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test
+  "org.scalatestplus.play" %% "scalatestplus-play" % "2.0.0" % Test
 )
 
 lazy val root = (project in file("."))
   .enablePlugins(PlayScala)
   .disablePlugins(PlayLayoutPlugin)
   .settings(publishSettings: _*)
-  .settings(githubPagesSettings: _*)
-
-lazy val githubPagesSettings = ghpages.settings ++ Seq(
-  git.remoteRepo := "git@github.com:marcospereira/play-i18n-hocon.git"
-)
 
 lazy val publishSettings = Seq(
   publishMavenStyle := true,
