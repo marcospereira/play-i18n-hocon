@@ -1,7 +1,7 @@
 # Play I18n using HOCON
 
 [![Build Status](https://travis-ci.org/marcospereira/play-i18n-hocon.svg?branch=master)](https://travis-ci.org/marcospereira/play-i18n-hocon) [![Build status](https://ci.appveyor.com/api/projects/status/n5ykw0wuq04rpd5a?svg=true)](https://ci.appveyor.com/project/marcospereira/play-i18n-hocon)
- [![codecov](https://codecov.io/gh/marcospereira/play-i18n-hocon/branch/master/graph/badge.svg)](https://codecov.io/gh/marcospereira/play-i18n-hocon) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/af05a1d033aa4256af5329a6f4711721)](https://www.codacy.com/app/marcospereira/play-i18n-hocon?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=marcospereira/play-i18n-hocon&amp;utm_campaign=Badge_Grade) [![Maven](https://img.shields.io/maven-central/v/com.github.marcospereira/play-hocon-i18n_2.11.svg)](http://mvnrepository.com/artifact/com.github.marcospereira/play-hocon-i18n_2.11)
+ [![codecov](https://codecov.io/gh/marcospereira/play-i18n-hocon/branch/master/graph/badge.svg)](https://codecov.io/gh/marcospereira/play-i18n-hocon) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/af05a1d033aa4256af5329a6f4711721)](https://www.codacy.com/app/marcospereira/play-i18n-hocon?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=marcospereira/play-i18n-hocon&amp;utm_campaign=Badge_Grade) [![Maven](https://img.shields.io/maven-central/v/com.github.marcospereira/play-hocon-i18n_2.12.svg)](http://mvnrepository.com/artifact/com.github.marcospereira/play-hocon-i18n_2.12)
 
 
 [HOCON](https://github.com/typesafehub/config/blob/v1.3.0/HOCON.md) (Human-Optimized Config Object Notation) and Typesafe Config are the standard way to [configure Play applications](https://www.playframework.com/documentation/2.5.x/Configuration). But, for Internationalization, Play uses [Java Properties](https://docs.oracle.com/javase/tutorial/essential/environment/properties.html) which don't have a syntax to structure an tree of keys used to i18n.
@@ -34,7 +34,7 @@ Just follow the steps below:
 Add the dependency to your `build.sbt` file:
 
 ```scala
-libraryDependencies += "com.github.marcospereira" %% "play-hocon-i18n" % "1.0.0"
+libraryDependencies += "com.github.marcospereira" %% "play-hocon-i18n" % "1.0.1"
 ```
 
 ### Disable built-in I18n Module
