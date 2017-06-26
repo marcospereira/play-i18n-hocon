@@ -2,12 +2,10 @@ language: scala
 sudo: false
 jdk:
   - oraclejdk8
-env:
-  - SCRIPT="sbt clean coverage test coverageReport codacyCoverage publishLocal"
-  - SCRIPT="./scripts/testJavaSample"
-  - SCRIPT="./scripts/testScalaSample"
 script:
-  - $SCRIPT
+  - sbt clean coverage test coverageReport codacyCoverage publishLocal
+  - ./scripts/testJavaSample
+  - ./scripts/testScalaSample
 cache:
   directories:
     - $HOME/.ivy2/cache
