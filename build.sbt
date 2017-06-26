@@ -2,7 +2,9 @@ name := "play-hocon-i18n"
 
 organization := "com.github.marcospereira"
 
-scalaVersion := "2.11.11"
+scalaVersion := "2.12.2"
+
+crossScalaVersions := Seq("2.11.11", "2.12.2")
 
 startYear := Some(2016)
 
@@ -11,7 +13,7 @@ description := "A Play modules that provides I18n using Hocon as the messages fi
 scalacOptions := Seq("-feature", "-deprecation", "-Ywarn-unused-import")
 
 libraryDependencies ++= Seq(
-  "org.scalatestplus.play" %% "scalatestplus-play" % "2.0.0" % Test
+  "org.scalatestplus.play" %% "scalatestplus-play" % "3.0.0" % Test
 )
 
 lazy val root = (project in file("."))

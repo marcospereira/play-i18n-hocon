@@ -8,7 +8,7 @@
 
  This plugin offers that by using HOCON as the language for I18n too, so your `messages` files will be like:
 
- ```
+```HOCON
  pages {
     signup {
         title = "The Signup page"
@@ -21,7 +21,7 @@
         }
     }
  }
- ```
+```
 
 This is not meant to be used as a drop-in replacement to default built-in module since Java Properties syntax is not compatible with HOCON.
 
@@ -29,15 +29,15 @@ This is not meant to be used as a drop-in replacement to default built-in module
 
 Just follow the steps below:
 
-#### Add Module Dependency
+### Add Module Dependency
 
 Add the dependency to your `build.sbt` file:
 
 ```scala
-libraryDependencies += "com.github.marcospereira" %% "play-hocon-i18n" % "0.0.2"
+libraryDependencies += "com.github.marcospereira" %% "play-hocon-i18n" % "1.0.0"
 ```
 
-#### Disable built-in I18n Module
+### Disable built-in I18n Module
 
 Add the following line to your `conf/application.conf` file:
 
@@ -45,7 +45,7 @@ Add the following line to your `conf/application.conf` file:
 play.modules.disabled += play.api.i18n.I18nModule
 ```
 
-#### Enable HOCON I18n Module
+### Enable HOCON I18n Module
 
 Add the following line to your `conf/application.conf` file:
 
@@ -53,7 +53,7 @@ Add the following line to your `conf/application.conf` file:
 play.modules.enabled += com.marcospereira.play.i18n.HoconI18nModule
 ```
 
-#### Write your message files with HOCON syntax
+### Write your message files with HOCON syntax
 
 As stated before, HOCON syntax and Java Properties are not fully compatible. The good part is that HOCON loader gives clear messages about invalid syntax and you can easily fix the errors. Of course, all HOCON features are enable here. Finally, you have to rename your messages files to have a `.conf` extension, per instance:
 
