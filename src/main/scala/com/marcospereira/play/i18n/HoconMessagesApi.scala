@@ -5,6 +5,7 @@ import java.util.Properties
 import javax.inject.{ Inject, Singleton }
 
 import com.typesafe.config.ConfigFactory
+import play.api.http.HttpConfiguration
 import play.api.i18n._
 import play.api.inject.Module
 import play.api.{ Configuration, Environment }
@@ -13,11 +14,24 @@ import play.utils.Resources
 import scala.collection.JavaConverters._
 
 @Singleton
-class HoconMessagesApi @Inject() (
-    environment: Environment,
-    configuration: Configuration,
-    langs: Langs
-) extends DefaultMessagesApi(environment, configuration, langs) {
+class HoconMessagesApiProvider @Inject() (
+  environment: Environment,
+  config: Configuration,
+  langs: Langs,
+  httpConfiguration: HttpConfiguration
+)
+    extends DefaultMessagesApiProvider(environment, config, langs, httpConfiguration) {
+
+  override lazy val get: MessagesApi = {
+    new DefaultMessagesApi(
+      loadAllMessages,
+      langs,
+      langCookieName = langCookieName,
+      langCookieSecure = langCookieSecure,
+      langCookieHttpOnly = langCookieHttpOnly,
+      httpConfiguration = httpConfiguration
+    )
+  }
 
   override protected def loadMessages(file: String): Map[String, String] = {
     getResources(file)
@@ -35,7 +49,7 @@ class HoconMessagesApi @Inject() (
     )
   }
 
-  private def joinPaths(first: Option[String], second: String) = first match {
+  override protected def joinPaths(first: Option[String], second: String) = first match {
     case Some(parent) => new java.io.File(parent, second).getPath
     case None => second
   }
@@ -79,10 +93,14 @@ class HoconMessagesApi @Inject() (
  * }}}
  */
 class HoconI18nModule extends Module {
-  def bindings(environment: Environment, configuration: Configuration) = Seq(
-    bind[Langs].to[DefaultLangs],
-    bind[MessagesApi].to[HoconMessagesApi]
-  )
+  def bindings(environment: Environment, configuration: Configuration) = {
+    Seq(
+      bind[Langs].toProvider[DefaultLangsProvider],
+      bind[MessagesApi].toProvider[HoconMessagesApiProvider],
+      bind[play.i18n.MessagesApi].toSelf,
+      bind[play.i18n.Langs].toSelf
+    )
+  }
 }
 
 /**
@@ -92,7 +110,8 @@ trait HoconI18nComponents {
 
   def environment: Environment
   def configuration: Configuration
+  def httpConfiguration: HttpConfiguration
+  def langs: Langs
 
-  lazy val messagesApi: MessagesApi = new HoconMessagesApi(environment, configuration, langs)
-  lazy val langs: Langs = new DefaultLangs(configuration)
+  lazy val messagesApi: MessagesApi = new HoconMessagesApiProvider(environment, configuration, langs, httpConfiguration).get
 }
