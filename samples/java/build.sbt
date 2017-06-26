@@ -4,11 +4,9 @@ version := "1.0-SNAPSHOT"
 
 lazy val root = (project in file(".")).enablePlugins(PlayJava)
 
-scalaVersion := "2.11.8"
+scalaVersion := "2.12.2"
 
 libraryDependencies ++= Seq(
-  javaJdbc,
-  cache,
-  javaWs,
-  "com.github.marcospereira" %% "play-hocon-i18n" % "0.0.2"
+  guice,
+  "com.github.marcospereira" %% "play-hocon-i18n" % "1.0.0-SNAPSHOT"
 )
