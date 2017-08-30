@@ -106,12 +106,12 @@ class HoconI18nModule extends Module {
 /**
  * Components for Compile Time Dependency Injection.
  */
-trait HoconI18nComponents {
+trait HoconI18nComponents extends I18nComponents {
 
   def environment: Environment
   def configuration: Configuration
   def httpConfiguration: HttpConfiguration
   def langs: Langs
 
-  lazy val messagesApi: MessagesApi = new HoconMessagesApiProvider(environment, configuration, langs, httpConfiguration).get
+  override lazy val messagesApi: MessagesApi = new HoconMessagesApiProvider(environment, configuration, langs, httpConfiguration).get
 }
